@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
@@ -20,10 +14,17 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-
         /* =====================================
-           DATE BUTTON
-        ====================================== */
+           BOOKING CONTROLS
+        ===================================== */
+
+        .choice-button.selected,
+        .date-button.selected {
+            border-color: #8EB69B;
+            background: rgba(142, 182, 155, 0.12);
+            color: #8EB69B;
+            box-shadow: 0 0 0 1px rgba(142, 182, 155, 0.18);
+        }
 
         .date-picker-wrap {
             position: relative;
@@ -41,11 +42,6 @@
             z-index: 1;
         }
 
-        /*
-         * The real date input stays on top of the button
-         * on phones so Android/iPhone can open the calendar.
-         */
-
         .mobile-date-input {
             position: absolute;
             inset: 0;
@@ -54,85 +50,51 @@
             opacity: 0;
             cursor: pointer;
             z-index: 2;
-            font-size: 16px;
         }
 
-        .date-button.selected {
-            border-color: #8EB69B;
-            background: rgba(142, 182, 155, 0.12);
+        .hidden-field {
+            display: none;
+        }
+
+        .optional {
             color: #8EB69B;
+            font-size: 0.7em;
+            margin-left: 6px;
         }
-
 
         /* =====================================
-           MOBILE RESPONSIVE
-           NO HAMBURGER MENU
-        ====================================== */
+           MOBILE NAVIGATION
+        ===================================== */
 
         @media (max-width: 600px) {
-
-            html {
-                scroll-behavior: smooth;
-            }
 
             body {
                 overflow-x: hidden;
             }
 
             .header {
-                padding: 14px 8px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                overflow: hidden;
-            }
-
-            .logo {
-                display: none !important;
+                padding: 14px 12px;
             }
 
             .navbar {
                 display: flex !important;
                 align-items: center;
-                justify-content: flex-start;
-                gap: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px 13px;
                 width: 100%;
-                max-width: 100%;
-                overflow-x: auto;
-                overflow-y: hidden;
-                white-space: nowrap;
-                scrollbar-width: none;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .navbar::-webkit-scrollbar {
-                display: none;
             }
 
             .navbar a {
-                display: inline-flex !important;
-                align-items: center;
-                justify-content: center;
-                min-height: 38px;
-                padding: 7px 4px;
-                font-size: 0.67rem;
-                letter-spacing: 0.5px;
+                font-size: 0.68rem;
+                letter-spacing: 0.7px;
                 white-space: nowrap;
-                flex: 0 0 auto;
-                cursor: pointer;
-                touch-action: manipulation;
             }
 
             .menu-button,
-            #menuButton,
-            .mobile-menu,
-            #mobileMenu {
+            .mobile-menu {
                 display: none !important;
             }
-
-
-            /* HERO */
 
             .hero {
                 min-height: auto;
@@ -144,349 +106,95 @@
                 max-width: 100%;
             }
 
-            .small-title {
-                font-size: 0.75rem;
-                letter-spacing: 2px;
-            }
-
             .hero h1 {
                 font-size: clamp(2.1rem, 10vw, 3.2rem);
                 line-height: 1.02;
-                letter-spacing: -1px;
             }
 
             .hero-description {
                 font-size: 0.92rem;
                 line-height: 1.6;
-                max-width: 100%;
             }
 
             .main-button {
                 width: 100%;
-                padding: 14px 18px;
-                font-size: 0.85rem;
-                min-height: 54px;
-                cursor: pointer;
-                touch-action: manipulation;
             }
-
-
-            /* SECTIONS */
 
             .section {
                 padding: 70px 18px;
             }
 
-            .section-heading {
-                margin-bottom: 35px;
-            }
-
             .section-heading h2 {
                 font-size: clamp(2rem, 9vw, 3rem);
-                line-height: 1.05;
             }
-
-            .section-heading p {
-                font-size: 0.9rem;
-                line-height: 1.55;
-            }
-
-
-            /* BOOKING */
 
             .booking-container {
                 width: 100%;
-            }
-
-            .booking-form {
-                gap: 18px;
             }
 
             .form-group {
                 width: 100%;
             }
 
-            .form-group label {
-                font-size: 0.72rem;
-                letter-spacing: 1px;
-                margin-bottom: 8px;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                width: 100%;
-                font-size: 16px;
-                padding: 13px 14px;
-                min-height: 50px;
-            }
-
-            .form-group textarea {
-                min-height: 120px;
-            }
-
-
-            /* CHOICE BUTTONS */
-
             .choice-grid {
                 grid-template-columns: 1fr;
-                gap: 10px;
             }
 
             .choice-button {
-                width: 100%;
-                min-height: 58px;
-                padding: 12px 14px;
-                font-size: 0.8rem;
-                cursor: pointer;
-                touch-action: manipulation;
-                -webkit-tap-highlight-color: transparent;
-                user-select: none;
-            }
-
-            .choice-button:active,
-            .number-button:active,
-            .submit-button:active,
-            .main-button:active {
-                transform: scale(0.98);
-            }
-
-
-            /* DATE */
-
-            .date-picker-wrap {
-                width: 100%;
                 min-height: 58px;
             }
 
             .date-button {
-                width: 100%;
                 min-height: 58px;
-                font-size: 0.8rem;
-                padding: 12px 14px;
-                cursor: pointer;
-                touch-action: manipulation;
             }
-
-            .mobile-date-input {
-                min-height: 58px;
-                height: 58px;
-            }
-
-
-            /* OTHER TIME */
-
-            #otherTimeContainer {
-                width: 100%;
-            }
-
-
-            /* OTHER EVENT */
-
-            #otherEventContainer {
-                width: 100%;
-            }
-
-
-            /* NUMBER */
-
-            .number-selector {
-                height: 62px;
-                width: 100%;
-            }
-
-            .number-button {
-                width: 52px;
-                height: 52px;
-                min-width: 52px;
-                cursor: pointer;
-                touch-action: manipulation;
-                -webkit-tap-highlight-color: transparent;
-            }
-
-            .number-display {
-                font-size: 1.15rem;
-            }
-
-
-            /* PAYMENT */
-
-            .payment-options {
-                width: 100%;
-            }
-
-
-            /* SUBMIT */
 
             .submit-button {
                 width: 100%;
-                min-height: 60px;
-                font-size: 0.85rem;
-                cursor: pointer;
-                touch-action: manipulation;
-                -webkit-tap-highlight-color: transparent;
+                min-height: 58px;
             }
 
-            .required-notice {
-                font-size: 0.72rem;
-                line-height: 1.5;
-            }
-
-
-            /* RULES */
-
-            .rules-grid {
+            .rules-grid,
+            .contact-grid {
                 grid-template-columns: 1fr;
-                gap: 12px;
             }
-
-            .rule-card {
-                padding: 20px;
-            }
-
-            .rule-card h3 {
-                font-size: 0.9rem;
-            }
-
-            .rule-card p {
-                font-size: 0.82rem;
-                line-height: 1.5;
-            }
-
-            .rule-number {
-                font-size: 0.75rem;
-            }
-
-            .rules-bottom {
-                font-size: 0.75rem;
-                line-height: 1.5;
-                padding: 18px;
-            }
-
-
-            /* ABOUT ME */
 
             .about-content {
                 width: 100%;
             }
-
-            .about-label {
-                font-size: 1rem;
-                margin-bottom: 25px;
-            }
-
-            .about-text p {
-                font-size: 0.88rem;
-                line-height: 1.65;
-                margin-bottom: 18px;
-            }
-
-
-            /* CONTACT */
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .contact-card {
-                padding: 16px;
-            }
-
-            .contact-card h3 {
-                font-size: 0.82rem;
-            }
-
-            .contact-card p {
-                font-size: 0.78rem;
-            }
-
-            .contact-icon {
-                width: 42px;
-                height: 42px;
-            }
-
-            .contact-arrow {
-                font-size: 1rem;
-            }
-
-
-            /* FOOTER */
-
-            .footer {
-                padding: 35px 18px 25px;
-            }
-
-            .footer-logo {
-                font-size: 1rem;
-            }
-
-            .footer p {
-                font-size: 0.75rem;
-            }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
     <!-- =====================================
          HEADER
-    ====================================== -->
+    ===================================== -->
 
     <header class="header">
 
-        <a
-            href="#home"
-            class="logo"
-        >
+        <a href="#home" class="logo">
             CM CREATIVESHOTS
         </a>
 
-
         <nav class="navbar">
-
-            <a href="#home">
-                HOME
-            </a>
-
-            <a href="#rules">
-                RULES
-            </a>
-
-            <a href="#booking">
-                BOOKING
-            </a>
-
-            <a href="#about">
-                ABOUT ME
-            </a>
-
-            <a href="#contact">
-                CONTACT
-            </a>
-
+            <a href="#home">HOME</a>
+            <a href="#rules">RULES</a>
+            <a href="#booking">BOOKING</a>
+            <a href="#about">ABOUT ME</a>
+            <a href="#contact">CONTACT</a>
         </nav>
 
     </header>
 
 
-
     <main>
-
 
         <!-- =====================================
              HOME
-        ====================================== -->
+        ===================================== -->
 
-        <section
-            class="hero"
-            id="home"
-        >
+        <section class="hero" id="home">
 
             <div class="hero-content">
 
@@ -494,29 +202,21 @@
                     WELCOME TO
                 </p>
 
-
                 <h1>
                     CM CREATIVESHOTS<br>
                     WEBSITE
                 </h1>
 
-
                 <p class="hero-description">
-
                     CreativeShots By C.Monte is ready to serve you.
                     Quality and creativity are what I bring to every
                     photoshoot, from personal sessions to your special events.
                     Simply get in touch with me.
-
                 </p>
-
 
                 <div class="hero-buttons">
 
-                    <a
-                        href="#booking"
-                        class="main-button"
-                    >
+                    <a href="#booking" class="main-button">
                         BOOK A SESSION
                         <span>→</span>
                     </a>
@@ -541,15 +241,135 @@
         </section>
 
 
+        <!-- =====================================
+             RULES
+        ===================================== -->
+
+        <section class="section rules-section" id="rules">
+
+            <div class="section-heading">
+
+                <p class="small-title">
+                    PLEASE READ BEFORE BOOKING
+                </p>
+
+                <h2>
+                    CM CREATIVESHOTS<br>
+                    PHOTOGRAPHY BOOKING POLICY
+                </h2>
+
+            </div>
+
+
+            <div class="rules-grid">
+
+                <div class="rule-card">
+                    <div class="rule-number">01</div>
+                    <h3>DEPOSIT REQUIRED</h3>
+                    <p>
+                        A deposit is required to secure your date.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">02</div>
+                    <h3>BOOKING CONFIRMATION</h3>
+                    <p>
+                        Your booking is not confirmed until the deposit is paid.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">03</div>
+                    <h3>NON-REFUNDABLE</h3>
+                    <p>
+                        Deposits are non-refundable.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">04</div>
+                    <h3>BE ON TIME</h3>
+                    <p>
+                        Please arrive on time. Late arrivals will be charged a late fee.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">05</div>
+                    <h3>RESCHEDULING</h3>
+                    <p>
+                        Rescheduling must be requested in advance.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">06</div>
+                    <h3>COME PHOTO-READY</h3>
+                    <p>
+                        Please come photo-ready unless agreed otherwise.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">07</div>
+                    <h3>EDITED PHOTOS</h3>
+                    <p>
+                        Edited photos will be delivered within the agreed timeframe.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">08</div>
+                    <h3>RAW PHOTOS</h3>
+                    <p>
+                        RAW/unedited photos are not included.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">09</div>
+                    <h3>SOCIAL MEDIA</h3>
+                    <p>
+                        Please let us know beforehand if you prefer your photos
+                        not to be posted on our social media.
+                    </p>
+                </div>
+
+
+                <div class="rule-card">
+                    <div class="rule-number">10</div>
+                    <h3>LOCATION</h3>
+                    <p>
+                        Indoor/outdoor location and any additional fees will be
+                        confirmed before booking.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="rules-bottom">
+                BY BOOKING WITH CREATIVE SHOTS, YOU ACKNOWLEDGE AND AGREE
+                TO THE BOOKING POLICY ABOVE.
+            </div>
+
+        </section>
+
 
         <!-- =====================================
              BOOKING
-        ====================================== -->
+        ===================================== -->
 
-        <section
-            class="section booking-section"
-            id="booking"
-        >
+        <section class="section booking-section" id="booking">
 
             <div class="section-heading">
 
@@ -557,11 +377,9 @@
                     BOOK YOUR SESSION
                 </p>
 
-
                 <h2>
                     BOOKING
                 </h2>
-
 
                 <p>
                     Please complete all required fields below.
@@ -571,14 +389,9 @@
             </div>
 
 
-
             <div class="booking-container">
 
-
-                <form
-                    id="bookingForm"
-                    class="booking-form"
-                >
+                <form id="bookingForm" class="booking-form">
 
 
                     <!-- NAME -->
@@ -586,7 +399,7 @@
                     <div class="form-group">
 
                         <label for="fullName">
-                            FIRST & LAST NAME
+                            FIRST &amp; LAST NAME
                             <span>*</span>
                         </label>
 
@@ -599,7 +412,6 @@
                         >
 
                     </div>
-
 
 
                     <!-- PHONE -->
@@ -622,7 +434,6 @@
                     </div>
 
 
-
                     <!-- DATE -->
 
                     <div class="form-group full-width">
@@ -631,7 +442,6 @@
                             DATE
                             <span>*</span>
                         </label>
-
 
                         <div class="date-picker-wrap">
 
@@ -642,7 +452,6 @@
                             >
                                 SELECT DATE
                             </button>
-
 
                             <input
                                 type="date"
@@ -655,7 +464,6 @@
                         </div>
 
                     </div>
-
 
 
                     <!-- LOCATION -->
@@ -678,10 +486,7 @@
                     </div>
 
 
-
-                    <!-- =================================
-                         TIME OPTIONS
-                    ================================== -->
+                    <!-- TIME -->
 
                     <div class="form-group full-width">
 
@@ -690,76 +495,37 @@
                             <span>*</span>
                         </label>
 
+                        <div class="choice-grid time-options" id="timeOptions">
 
-                        <div
-                            class="choice-grid time-options"
-                            id="timeOptions"
-                        >
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="2:00 PM"
-                            >
+                            <button type="button" class="choice-button" data-value="2:00 PM">
                                 2:00 PM
                             </button>
 
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="3:00 PM"
-                            >
+                            <button type="button" class="choice-button" data-value="3:00 PM">
                                 3:00 PM
                             </button>
 
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="4:00 PM"
-                            >
+                            <button type="button" class="choice-button" data-value="4:00 PM">
                                 4:00 PM
                             </button>
 
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="5:00 PM"
-                            >
+                            <button type="button" class="choice-button" data-value="5:00 PM">
                                 5:00 PM
                             </button>
 
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="6:00 PM"
-                            >
+                            <button type="button" class="choice-button" data-value="6:00 PM">
                                 6:00 PM
                             </button>
 
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="7:00 PM"
-                            >
+                            <button type="button" class="choice-button" data-value="7:00 PM">
                                 7:00 PM
                             </button>
 
-
-                            <button
-                                type="button"
-                                class="choice-button"
-                                data-value="OTHER"
-                            >
+                            <button type="button" class="choice-button" data-value="OTHER">
                                 OTHER
                             </button>
 
                         </div>
-
 
                         <input
                             type="hidden"
@@ -771,7 +537,6 @@
                     </div>
 
 
-
                     <!-- OTHER TIME -->
 
                     <div
@@ -780,13 +545,9 @@
                     >
 
                         <label for="otherTime">
-
                             YOUR PREFERRED TIME
-
                             <span>*</span>
-
                         </label>
-
 
                         <input
                             type="text"
@@ -798,10 +559,7 @@
                     </div>
 
 
-
-                    <!-- =================================
-                         SESSION TYPE
-                    ================================== -->
+                    <!-- SESSION TYPE -->
 
                     <div class="form-group full-width">
 
@@ -810,11 +568,7 @@
                             <span>*</span>
                         </label>
 
-
-                        <div
-                            class="choice-grid"
-                            id="eventOptions"
-                        >
+                        <div class="choice-grid" id="eventOptions">
 
                             <button
                                 type="button"
@@ -824,7 +578,6 @@
                                 INDOOR
                             </button>
 
-
                             <button
                                 type="button"
                                 class="choice-button"
@@ -832,7 +585,6 @@
                             >
                                 OUTDOOR
                             </button>
-
 
                             <button
                                 type="button"
@@ -844,7 +596,6 @@
 
                         </div>
 
-
                         <input
                             type="hidden"
                             id="selectedEvent"
@@ -855,39 +606,29 @@
                     </div>
 
 
-
-                    <!-- OTHER EVENT / ANYTHING ELSE -->
+                    <!-- OTHER EVENT - OPTIONAL -->
 
                     <div
-                        class="form-group full-width"
+                        class="form-group full-width hidden-field"
                         id="otherEventContainer"
                     >
 
                         <label for="otherEvent">
-
-                            ANYTHING ELSE / OTHER EVENT
-
-                            <span class="optional">
-                                OPTIONAL
-                            </span>
-
+                            PLEASE TELL ME WHAT OTHER EVENT YOU NEED
+                            <span class="optional">OPTIONAL</span>
                         </label>
-
 
                         <textarea
                             id="otherEvent"
                             name="otherEvent"
                             rows="4"
-                            placeholder="Tell me what type of event or anything else you would like me to know..."
+                            placeholder="Tell me what type of event or session you need..."
                         ></textarea>
 
                     </div>
 
 
-
-                    <!-- =================================
-                         NUMBER OF PEOPLE
-                    ================================== -->
+                    <!-- NUMBER OF PEOPLE -->
 
                     <div class="form-group full-width">
 
@@ -896,9 +637,7 @@
                             <span>*</span>
                         </label>
 
-
                         <div class="number-selector">
-
 
                             <button
                                 type="button"
@@ -908,14 +647,12 @@
                                 −
                             </button>
 
-
                             <div
                                 id="peopleNumber"
                                 class="number-display"
                             >
                                 1
                             </div>
-
 
                             <button
                                 type="button"
@@ -926,7 +663,6 @@
                             </button>
 
                         </div>
-
 
                         <input
                             type="hidden"
@@ -939,10 +675,7 @@
                     </div>
 
 
-
-                    <!-- =================================
-                         PAYMENT
-                    ================================== -->
+                    <!-- PAYMENT -->
 
                     <div class="form-group full-width">
 
@@ -950,7 +683,6 @@
                             PAYMENT METHOD
                             <span>*</span>
                         </label>
-
 
                         <div
                             class="choice-grid payment-options"
@@ -965,7 +697,6 @@
                                 CASH
                             </button>
 
-
                             <button
                                 type="button"
                                 class="choice-button"
@@ -975,7 +706,6 @@
                             </button>
 
                         </div>
-
 
                         <input
                             type="hidden"
@@ -987,23 +717,14 @@
                     </div>
 
 
-
-                    <!-- =================================
-                         OPTIONAL MESSAGE
-                    ================================== -->
+                    <!-- OPTIONAL MESSAGE -->
 
                     <div class="form-group full-width">
 
                         <label for="extraMessage">
-
                             ANYTHING ELSE YOU'D LIKE ME TO KNOW?
-
-                            <span class="optional">
-                                OPTIONAL
-                            </span>
-
+                            <span class="optional">OPTIONAL</span>
                         </label>
-
 
                         <textarea
                             id="extraMessage"
@@ -1015,21 +736,18 @@
                     </div>
 
 
-
-                    <!-- NOTICE -->
+                    <!-- REQUIRED NOTICE -->
 
                     <div class="required-notice">
 
-                        <strong>
-                            * REQUIRED
-                        </strong>
+                        <strong>* REQUIRED</strong>
 
                         <span>
-                            All required fields must be completed before your booking can be submitted.
+                            All required fields must be completed before your
+                            booking can be submitted.
                         </span>
 
                     </div>
-
 
 
                     <!-- SUBMIT -->
@@ -1038,15 +756,9 @@
                         type="submit"
                         class="submit-button"
                     >
-
                         BOOK NOW
-
-                        <span>
-                            →
-                        </span>
-
+                        <span>→</span>
                     </button>
-
 
                 </form>
 
@@ -1055,246 +767,17 @@
         </section>
 
 
-
-        <!-- =====================================
-             RULES
-        ====================================== -->
-
-        <section
-            class="section rules-section"
-            id="rules"
-        >
-
-            <div class="section-heading">
-
-                <p class="small-title">
-                    PLEASE READ BEFORE BOOKING
-                </p>
-
-
-                <h2>
-                    CM CREATIVESHOTS<br>
-                    PHOTOGRAPHY BOOKING POLICY
-                </h2>
-
-            </div>
-
-
-
-            <div class="rules-grid">
-
-
-                <div class="rule-card">
-
-                    <div class="rule-number">
-                        01
-                    </div>
-
-                    <h3>
-                        DEPOSIT REQUIRED
-                    </h3>
-
-                    <p>
-                        A deposit is required to secure your date.
-                    </p>
-
-                </div>
-
-
-
-                <div class="rule-card">
-
-                    <div class="rule-number">
-                        02
-                    </div>
-
-                    <h3>
-                        BOOKING CONFIRMATION
-                    </h3>
-
-                    <p>
-                        Your booking is not confirmed until the deposit is paid.
-                    </p>
-
-                </div>
-
-
-
-                <div class="rule-card">
-
-                    <div class="rule-number">
-                        03
-                    </div>
-
-                    <h3>
-                        NON-REFUNDABLE
-                    </h3>
-
-                    <p>
-                        Deposits are non-refundable.
-                    </p>
-
-                </div>
-
-
-
-                <div class="rule-card">
-
-                    <div class="rule-number">
-                        04
-                    </div>
-
-                    <h3>
-                        BE ON TIME
-                    </h3>
-
-                    <p>
-                        Please arrive on time. Late arrivals will be charged a late fee.
-                    </p>
-
-                </div>
-
-
-
-                <div class="rule-card">
-
-                    <div class="rule-number">
-                        05
-                    </div>
-
-                    <h3>
-                        RESCHEDULING
-                    </h3>
-
-                    <p>
-                        Rescheduling must be requested in advance.
-                    </p>
-
-                </div>
-
-
-
-                <div class="rule-card">
-
-                    <div class="rule-number">
-                        06
-                    </div>
-
-                    <h3>
-                        COME PHOTO-READY
-                    </h3>
-
-                    <p>
-                        Please come photo-ready unless agreed otherwise.
-                    </p>
-
-                </div>
-
-
-
-                <div class="rule-card">
-
-                    <div class="rule-number">
-                        07
-                    </div>
-
-                    <h3>
-                        EDITED PHOTOS
-                    </h3>
-
-                    <p>
-                        Edited photos will be delivered within the agreed timeframe.
-                    </p>
-
-                </div>
-
-
-
-                <div class="rule-card">
-
-                    <div class="rule-number">
-                        08
-                    </div>
-
-                    <h3>
-                        RAW PHOTOS
-                    </h3>
-
-                    <p>
-                        RAW/unedited photos are not included.
-                    </p>
-
-                </div>
-
-
-
-                <div class="rule-card">
-
-                    <div class="rule-number">
-                        09
-                    </div>
-
-                    <h3>
-                        SOCIAL MEDIA
-                    </h3>
-
-                    <p>
-                        Please let me know beforehand if you prefer your photos
-                        not to be posted on our social media.
-                    </p>
-
-                </div>
-
-
-
-                <div class="rule-card">
-
-                    <div class="rule-number">
-                        10
-                    </div>
-
-                    <h3>
-                        LOCATION
-                    </h3>
-
-                    <p>
-                        Indoor/outdoor location and any additional fees will be
-                        confirmed before booking.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="rules-bottom">
-
-                BY BOOKING WITH CM CREATIVESHOTS,
-                YOU CONFIRM THAT YOU HAVE READ AND UNDERSTOOD
-                THE BOOKING POLICY.
-
-            </div>
-
-        </section>
-
-
-
         <!-- =====================================
              ABOUT ME
-        ====================================== -->
+        ===================================== -->
 
-        <section
-            class="section about-section"
-            id="about"
-        >
+        <section class="section about-section" id="about">
 
             <div class="section-heading">
 
                 <p class="small-title">
                     GET TO KNOW ME
                 </p>
-
 
                 <h2>
                     ABOUT ME
@@ -1303,30 +786,23 @@
             </div>
 
 
-
             <div class="about-content">
 
-
                 <div class="about-label">
-
-                    CM<br>
-                    CREATIVESHOTS
-
+                    CM CREATIVESHOTS
                 </div>
 
 
-
                 <div class="about-text">
-
 
                     <p>
                         In 2023, my journey into photography began unexpectedly.
                         I attended an event where someone I knew was taking photographs.
                         Out of curiosity, I jokingly asked if I could borrow his camera
                         and take a few pictures myself. The moment I held the camera
-                        and began capturing what was happening around me, something
-                        clicked. I loved the feeling of being behind the lens and
-                        turning ordinary moments into memories.
+                        and began capturing what was happening around me, something clicked.
+                        I loved the feeling of being behind the lens and turning ordinary
+                        moments into memories.
                     </p>
 
 
@@ -1357,10 +833,10 @@
                         exploring different areas and gaining experience wherever
                         possible. One of the biggest milestones in my journey so far
                         has been photographing a wedding. Being trusted to capture
-                        such an important day showed me how meaningful photography can
-                        be. It isn’t simply about taking beautiful pictures; it’s
-                        about preserving emotions, connections, and moments that people
-                        can return to for years to come.
+                        such an important day showed me how meaningful photography
+                        can be. It isn’t simply about taking beautiful pictures;
+                        it’s about preserving emotions, connections, and moments
+                        that people can return to for years to come.
                     </p>
 
 
@@ -1369,8 +845,8 @@
                         Things that may seem ordinary to someone else can become
                         something special through the right perspective, lighting,
                         timing, and creativity. What started with borrowing a camera
-                        at an event has grown into a passion that I hope will
-                        eventually become my full-time career.
+                        at an event has grown into a passion that I hope will eventually
+                        become my full-time career.
                     </p>
 
 
@@ -1393,7 +869,6 @@
                         to pursue.
                     </p>
 
-
                 </div>
 
             </div>
@@ -1401,15 +876,11 @@
         </section>
 
 
-
         <!-- =====================================
              CONTACT
-        ====================================== -->
+        ===================================== -->
 
-        <section
-            class="section contact-section"
-            id="contact"
-        >
+        <section class="section contact-section" id="contact">
 
             <div class="section-heading">
 
@@ -1417,19 +888,16 @@
                     GET IN TOUCH
                 </p>
 
-
                 <h2>
                     CONTACT
                 </h2>
 
-
                 <p>
                     Have a question or want to book a session?
-                    Get in touch with CM CreativeShots.
+                    Feel free to contact me.
                 </p>
 
             </div>
-
 
 
             <div class="contact-grid">
@@ -1441,149 +909,71 @@
                     href="https://wa.me/59995254792"
                     class="contact-card"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
 
                     <div class="contact-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"></path>
-
-                            <path d="M8.5 8.5c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4-.1.6l-.6.7c.5 1 1.3 1.7 2.3 2.2l.7-.6c.2-.2.4-.2.6-.1l1.6.8c.3.1.4.3.3.6-.2.8-.8 1.3-1.5 1.4-1.2.1-3-.6-4.6-2.1-1.4-1.4-2.2-3-2.2-4.1 0-.4.1-.7.3-.9z"></path>
-
-                        </svg>
-
+                        <span>◉</span>
                     </div>
-
 
                     <div>
-
-                        <h3>
-                            WHATSAPP
-                        </h3>
-
-                        <p>
-                            +599 9 525 4792
-                        </p>
-
+                        <h3>WHATSAPP</h3>
+                        <p>+599 9 525 4792</p>
                     </div>
 
-
-                    <span class="contact-arrow">
+                    <div class="contact-arrow">
                         →
-                    </span>
+                    </div>
 
                 </a>
-
 
 
                 <!-- EMAIL -->
 
                 <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=cmcreativeshots@gmail.com"
+                    href="mailto:cmcreativeshots@gmail.com"
                     class="contact-card"
-                    target="_blank"
-                    rel="noopener"
                 >
 
                     <div class="contact-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <rect
-                                x="3"
-                                y="5"
-                                width="18"
-                                height="14"
-                                rx="2"
-                            ></rect>
-
-                            <path d="M4 7l8 6 8-6"></path>
-
-                        </svg>
-
+                        <span>✉</span>
                     </div>
-
 
                     <div>
-
-                        <h3>
-                            EMAIL
-                        </h3>
-
-                        <p>
-                            cmcreativeshots@gmail.com
-                        </p>
-
+                        <h3>GMAIL</h3>
+                        <p>cmcreativeshots@gmail.com</p>
                     </div>
 
-
-                    <span class="contact-arrow">
+                    <div class="contact-arrow">
                         →
-                    </span>
+                    </div>
 
                 </a>
-
 
 
                 <!-- INSTAGRAM -->
 
                 <a
-                    href="https://www.instagram.com/cm.creativeshots/"
+                    href="https://instagram.com/cm.creativeshots"
                     class="contact-card"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
 
                     <div class="contact-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <rect
-                                x="3"
-                                y="3"
-                                width="18"
-                                height="18"
-                                rx="5"
-                            ></rect>
-
-                            <circle
-                                cx="12"
-                                cy="12"
-                                r="4"
-                            ></circle>
-
-                            <circle
-                                cx="17.5"
-                                cy="6.5"
-                                r="1"
-                            ></circle>
-
-                        </svg>
-
+                        <span>◎</span>
                     </div>
-
 
                     <div>
-
-                        <h3>
-                            INSTAGRAM
-                        </h3>
-
-                        <p>
-                            @cm.creativeshots
-                        </p>
-
+                        <h3>INSTAGRAM</h3>
+                        <p>cm.creativeshots</p>
                     </div>
 
-
-                    <span class="contact-arrow">
+                    <div class="contact-arrow">
                         →
-                    </span>
+                    </div>
 
                 </a>
-
 
 
                 <!-- FACEBOOK -->
@@ -1592,39 +982,23 @@
                     href="https://www.facebook.com/"
                     class="contact-card"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
 
                     <div class="contact-icon">
-
-                        <svg viewBox="0 0 24 24">
-
-                            <path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"></path>
-
-                        </svg>
-
+                        <span>f</span>
                     </div>
-
 
                     <div>
-
-                        <h3>
-                            FACEBOOK
-                        </h3>
-
-                        <p>
-                            Curshell Monte
-                        </p>
-
+                        <h3>FACEBOOK</h3>
+                        <p>Curshell Monte</p>
                     </div>
 
-
-                    <span class="contact-arrow">
+                    <div class="contact-arrow">
                         →
-                    </span>
+                    </div>
 
                 </a>
-
 
             </div>
 
@@ -1633,10 +1007,9 @@
     </main>
 
 
-
     <!-- =====================================
          FOOTER
-    ====================================== -->
+    ===================================== -->
 
     <footer class="footer">
 
@@ -1644,95 +1017,74 @@
             CM CREATIVESHOTS
         </div>
 
-
         <p>
-            Photography • Creativity • Memories
-        </p>
-
-
-        <div class="footer-line"></div>
-
-
-        <p class="copyright">
-            © 2026 CM CreativeShots. All Rights Reserved.
+            © 2026 CM CreativeShots. All rights reserved.
         </p>
 
     </footer>
 
 
-
     <!-- =====================================
          DATE SCRIPT
-    ====================================== -->
+    ===================================== -->
 
     <script>
+        (() => {
 
-        const dateButton =
-            document.getElementById("dateButton");
+            const dateButton =
+                document.getElementById("dateButton");
 
-        const dateInput =
-            document.getElementById("date");
+            const bookingDateInput =
+                document.getElementById("date");
 
+            if (!dateButton || !bookingDateInput) {
+                return;
+            }
 
-        if (dateButton && dateInput) {
+            const today =
+                new Date().toISOString().split("T")[0];
 
-            dateInput.addEventListener("change", function () {
+            bookingDateInput.min = today;
 
-                if (!this.value) {
+            bookingDateInput.addEventListener("change", () => {
+
+                if (!bookingDateInput.value) {
+                    dateButton.textContent = "SELECT DATE";
+                    dateButton.classList.remove("selected");
                     return;
                 }
 
                 const selectedDate =
-                    new Date(this.value + "T00:00:00");
+                    new Date(
+                        bookingDateInput.value + "T00:00:00"
+                    );
 
                 const formattedDate =
-                    selectedDate.toLocaleDateString("en-US", {
-                        weekday: "short",
-                        month: "short",
-                        day: "numeric",
-                        year: "numeric"
-                    });
+                    selectedDate.toLocaleDateString(
+                        "en-US",
+                        {
+                            weekday: "short",
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric"
+                        }
+                    );
 
-                dateButton.textContent =
-                    formattedDate;
+                dateButton.textContent = formattedDate;
 
                 dateButton.classList.add("selected");
 
             });
 
-
-            dateButton.addEventListener("click", function () {
-
-                try {
-
-                    if (typeof dateInput.showPicker === "function") {
-
-                        dateInput.showPicker();
-
-                    } else {
-
-                        dateInput.click();
-
-                    }
-
-                } catch (error) {
-
-                    dateInput.click();
-
-                }
-
-            });
-
-        }
-
+        })();
     </script>
 
 
-    <!-- MAIN JAVASCRIPT -->
+    <!-- =====================================
+         MAIN JAVASCRIPT
+    ===================================== -->
 
     <script src="script.js"></script>
 
-
 </body>
-
 </html>
