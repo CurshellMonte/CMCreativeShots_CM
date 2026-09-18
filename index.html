@@ -5,7 +5,10 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -42,234 +45,272 @@
             background: rgba(142, 182, 155, 0.12);
             color: #8EB69B;
         }
+
+
         /* =====================================
-   MOBILE RESPONSIVE - KEEP SAME STYLE
-   ===================================== */
+           MOBILE RESPONSIVE
+           NO HAMBURGER MENU
+           ===================================== */
 
-@media (max-width: 600px) {
+        @media (max-width: 600px) {
 
-    body {
-        overflow-x: hidden;
-    }
+            body {
+                overflow-x: hidden;
+            }
 
-    .header {
-        padding: 14px 18px;
-    }
+            .header {
+                padding: 14px 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                overflow-x: auto;
+            }
 
-    .navbar {
-        display: none;
-    }
+            .logo {
+                display: none;
+            }
 
-    .menu-button {
-        font-size: 22px;
-        padding: 6px 10px;
-    }
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                white-space: nowrap;
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
 
-    .hero {
-        min-height: auto;
-        padding: 100px 20px 70px;
-    }
+            .navbar::-webkit-scrollbar {
+                display: none;
+            }
 
-    .hero-content {
-        width: 100%;
-        max-width: 100%;
-    }
+            .navbar a {
+                font-size: 0.68rem;
+                letter-spacing: 0.7px;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
 
-    .small-title {
-        font-size: 0.75rem;
-        letter-spacing: 2px;
-    }
+            .menu-button {
+                display: none !important;
+            }
 
-    .hero h1 {
-        font-size: clamp(2.1rem, 10vw, 3.2rem);
-        line-height: 1.02;
-        letter-spacing: -1px;
-    }
+            .mobile-menu {
+                display: none !important;
+            }
 
-    .hero-description {
-        font-size: 0.92rem;
-        line-height: 1.6;
-        max-width: 100%;
-    }
+            .hero {
+                min-height: auto;
+                padding: 100px 20px 70px;
+            }
 
-    .main-button {
-        width: 100%;
-        padding: 14px 18px;
-        font-size: 0.85rem;
-    }
+            .hero-content {
+                width: 100%;
+                max-width: 100%;
+            }
 
-    .section {
-        padding: 70px 18px;
-    }
+            .small-title {
+                font-size: 0.75rem;
+                letter-spacing: 2px;
+            }
 
-    .section-heading {
-        margin-bottom: 35px;
-    }
+            .hero h1 {
+                font-size: clamp(2.1rem, 10vw, 3.2rem);
+                line-height: 1.02;
+                letter-spacing: -1px;
+            }
 
-    .section-heading h2 {
-        font-size: clamp(2rem, 9vw, 3rem);
-        line-height: 1.05;
-    }
+            .hero-description {
+                font-size: 0.92rem;
+                line-height: 1.6;
+                max-width: 100%;
+            }
 
-    .section-heading p {
-        font-size: 0.9rem;
-        line-height: 1.55;
-    }
+            .main-button {
+                width: 100%;
+                padding: 14px 18px;
+                font-size: 0.85rem;
+            }
 
-    .booking-container {
-        width: 100%;
-    }
+            .section {
+                padding: 70px 18px;
+            }
 
-    .booking-form {
-        gap: 18px;
-    }
+            .section-heading {
+                margin-bottom: 35px;
+            }
 
-    .form-group {
-        width: 100%;
-    }
+            .section-heading h2 {
+                font-size: clamp(2rem, 9vw, 3rem);
+                line-height: 1.05;
+            }
 
-    .form-group label {
-        font-size: 0.72rem;
-        letter-spacing: 1px;
-        margin-bottom: 8px;
-    }
+            .section-heading p {
+                font-size: 0.9rem;
+                line-height: 1.55;
+            }
 
-    .form-group input,
-    .form-group textarea {
-        width: 100%;
-        font-size: 0.9rem;
-        padding: 13px 14px;
-    }
+            .booking-container {
+                width: 100%;
+            }
 
-    .choice-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
+            .booking-form {
+                gap: 18px;
+            }
 
-    .choice-button {
-        min-height: 56px;
-        padding: 12px 14px;
-        font-size: 0.78rem;
-    }
+            .form-group {
+                width: 100%;
+            }
 
-    .date-button {
-        min-height: 56px;
-        font-size: 0.78rem;
-    }
+            .form-group label {
+                font-size: 0.72rem;
+                letter-spacing: 1px;
+                margin-bottom: 8px;
+            }
 
-    .number-selector {
-        height: 58px;
-    }
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                font-size: 0.9rem;
+                padding: 13px 14px;
+            }
 
-    .number-button {
-        width: 52px;
-        height: 52px;
-    }
+            .choice-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
 
-    .number-display {
-        font-size: 1.15rem;
-    }
+            .choice-button {
+                min-height: 56px;
+                padding: 12px 14px;
+                font-size: 0.78rem;
+            }
 
-    .submit-button {
-        width: 100%;
-        min-height: 58px;
-        font-size: 0.85rem;
-    }
+            .date-button {
+                min-height: 56px;
+                font-size: 0.78rem;
+            }
 
-    .required-notice {
-        font-size: 0.72rem;
-        line-height: 1.5;
-    }
+            .number-selector {
+                height: 58px;
+            }
 
-    /* RULES */
+            .number-button {
+                width: 52px;
+                height: 52px;
+            }
 
-    .rules-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
+            .number-display {
+                font-size: 1.15rem;
+            }
 
-    .rule-card {
-        padding: 20px;
-    }
+            .submit-button {
+                width: 100%;
+                min-height: 58px;
+                font-size: 0.85rem;
+            }
 
-    .rule-card h3 {
-        font-size: 0.9rem;
-    }
+            .required-notice {
+                font-size: 0.72rem;
+                line-height: 1.5;
+            }
 
-    .rule-card p {
-        font-size: 0.82rem;
-        line-height: 1.5;
-    }
 
-    .rule-number {
-        font-size: 0.75rem;
-    }
+            /* RULES */
 
-    .rules-bottom {
-        font-size: 0.75rem;
-        line-height: 1.5;
-        padding: 18px;
-    }
+            .rules-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
 
-    /* ABOUT ME */
+            .rule-card {
+                padding: 20px;
+            }
 
-    .about-content {
-        width: 100%;
-    }
+            .rule-card h3 {
+                font-size: 0.9rem;
+            }
 
-    .about-label {
-        font-size: 1rem;
-        margin-bottom: 25px;
-    }
+            .rule-card p {
+                font-size: 0.82rem;
+                line-height: 1.5;
+            }
 
-    .about-text p {
-        font-size: 0.88rem;
-        line-height: 1.65;
-        margin-bottom: 18px;
-    }
+            .rule-number {
+                font-size: 0.75rem;
+            }
 
-    /* CONTACT */
+            .rules-bottom {
+                font-size: 0.75rem;
+                line-height: 1.5;
+                padding: 18px;
+            }
 
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
 
-    .contact-card {
-        padding: 16px;
-    }
+            /* ABOUT ME */
 
-    .contact-card h3 {
-        font-size: 0.82rem;
-    }
+            .about-content {
+                width: 100%;
+            }
 
-    .contact-card p {
-        font-size: 0.78rem;
-    }
+            .about-label {
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
 
-    .contact-icon {
-        width: 42px;
-        height: 42px;
-    }
+            .about-text p {
+                font-size: 0.88rem;
+                line-height: 1.65;
+                margin-bottom: 18px;
+            }
 
-    .contact-arrow {
-        font-size: 1rem;
-    }
 
-    /* FOOTER */
+            /* CONTACT */
 
-    .footer {
-        padding: 35px 18px 25px;
-    }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
 
-    .footer-logo {
-        font-size: 1rem;
-    }
+            .contact-card {
+                padding: 16px;
+            }
 
-    .footer p {
-        font-size: 0.75rem;
-    }
-}
+            .contact-card h3 {
+                font-size: 0.82rem;
+            }
+
+            .contact-card p {
+                font-size: 0.78rem;
+            }
+
+            .contact-icon {
+                width: 42px;
+                height: 42px;
+            }
+
+            .contact-arrow {
+                font-size: 1rem;
+            }
+
+
+            /* FOOTER */
+
+            .footer {
+                padding: 35px 18px 25px;
+            }
+
+            .footer-logo {
+                font-size: 1rem;
+            }
+
+            .footer p {
+                font-size: 0.75rem;
+            }
+
+        }
 
     </style>
 
@@ -285,12 +326,19 @@
 
     <header class="header">
 
-        <a href="#home" class="logo">
-
+        <a
+            href="#home"
+            class="logo"
+        >
+            CM CREATIVESHOTS
         </a>
 
 
         <nav class="navbar">
+
+            <a href="#home">
+                HOME
+            </a>
 
             <a href="#rules">
                 RULES
@@ -310,43 +358,7 @@
 
         </nav>
 
-
-        <button
-            class="menu-button"
-            id="menuButton"
-            type="button"
-        >
-            ☰
-        </button>
-
     </header>
-
-
-
-    <!-- =====================================
-         MOBILE MENU
-    ====================================== -->
-
-    <div class="mobile-menu" id="mobileMenu">
-
-        <a href="#rules">
-            REGLA
-        </a>
-
-        <a href="#booking">
-            BOOKING
-        </a>
-
-        <a href="#about">
-            ABOUT ME
-        </a>
-
-        <a href="#contact">
-            CONTACT
-        </a>
-
-    </div>
-
 
 
     <main>
@@ -356,7 +368,10 @@
              HOME
         ====================================== -->
 
-        <section class="hero" id="home">
+        <section
+            class="hero"
+            id="home"
+        >
 
             <div class="hero-content">
 
@@ -721,15 +736,17 @@
                     <!-- OTHER EVENT -->
 
                     <div
-                        class="form-group full-width hidden-field"
+                        class="form-group full-width"
                         id="otherEventContainer"
                     >
 
                         <label for="otherEvent">
 
-                            PLEASE TELL ME WHAT OTHER EVENT YOU NEED
+                            ANYTHING ELSE / OTHER EVENT
 
-                            <span>*</span>
+                            <span class="optional">
+                                OPTIONAL
+                            </span>
 
                         </label>
 
@@ -738,7 +755,7 @@
                             id="otherEvent"
                             name="otherEvent"
                             rows="4"
-                            placeholder="Tell me what type of event or session you need..."
+                            placeholder="Tell me what type of event or anything else you would like me to know..."
                         ></textarea>
 
                     </div>
@@ -1336,8 +1353,7 @@
 
 
 
-                <!-- EMAIL:
-                     OPENS GMAIL COMPOSE WITH YOUR EMAIL READY -->
+                <!-- EMAIL -->
 
                 <a
                     href="https://mail.google.com/mail/?view=cm&fs=1&to=cmcreativeshots@gmail.com"
@@ -1385,6 +1401,8 @@
                 </a>
 
 
+
+                <!-- INSTAGRAM -->
 
                 <a
                     href="https://www.instagram.com/cm.creativeshots/"
@@ -1442,6 +1460,8 @@
                 </a>
 
 
+
+                <!-- FACEBOOK -->
 
                 <a
                     href="https://www.facebook.com/"
