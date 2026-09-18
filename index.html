@@ -21,7 +21,14 @@
 
     <style>
 
-        /* DATE BUTTON ONLY */
+        /* =====================================
+           DATE BUTTON
+        ====================================== */
+
+        .date-picker-wrap {
+            position: relative;
+            width: 100%;
+        }
 
         .date-button {
             width: 100%;
@@ -30,14 +37,24 @@
             font-weight: 700;
             letter-spacing: 1px;
             cursor: pointer;
+            position: relative;
+            z-index: 1;
         }
 
-        .hidden-date-input {
+        /*
+         * The real date input stays on top of the button
+         * on phones so Android/iPhone can open the calendar.
+         */
+
+        .mobile-date-input {
             position: absolute;
-            width: 1px;
-            height: 1px;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             opacity: 0;
-            pointer-events: none;
+            cursor: pointer;
+            z-index: 2;
+            font-size: 16px;
         }
 
         .date-button.selected {
@@ -50,36 +67,43 @@
         /* =====================================
            MOBILE RESPONSIVE
            NO HAMBURGER MENU
-           ===================================== */
+        ====================================== */
 
         @media (max-width: 600px) {
+
+            html {
+                scroll-behavior: smooth;
+            }
 
             body {
                 overflow-x: hidden;
             }
 
             .header {
-                padding: 14px 12px;
+                padding: 14px 8px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 width: 100%;
-                overflow-x: auto;
+                overflow: hidden;
             }
 
             .logo {
-                display: none;
+                display: none !important;
             }
 
             .navbar {
-                display: flex;
+                display: flex !important;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
                 gap: 10px;
                 width: 100%;
-                white-space: nowrap;
+                max-width: 100%;
                 overflow-x: auto;
+                overflow-y: hidden;
+                white-space: nowrap;
                 scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
             }
 
             .navbar::-webkit-scrollbar {
@@ -87,19 +111,28 @@
             }
 
             .navbar a {
-                font-size: 0.68rem;
-                letter-spacing: 0.7px;
+                display: inline-flex !important;
+                align-items: center;
+                justify-content: center;
+                min-height: 38px;
+                padding: 7px 4px;
+                font-size: 0.67rem;
+                letter-spacing: 0.5px;
                 white-space: nowrap;
-                flex-shrink: 0;
+                flex: 0 0 auto;
+                cursor: pointer;
+                touch-action: manipulation;
             }
 
-            .menu-button {
+            .menu-button,
+            #menuButton,
+            .mobile-menu,
+            #mobileMenu {
                 display: none !important;
             }
 
-            .mobile-menu {
-                display: none !important;
-            }
+
+            /* HERO */
 
             .hero {
                 min-height: auto;
@@ -132,7 +165,13 @@
                 width: 100%;
                 padding: 14px 18px;
                 font-size: 0.85rem;
+                min-height: 54px;
+                cursor: pointer;
+                touch-action: manipulation;
             }
+
+
+            /* SECTIONS */
 
             .section {
                 padding: 70px 18px;
@@ -151,6 +190,9 @@
                 font-size: 0.9rem;
                 line-height: 1.55;
             }
+
+
+            /* BOOKING */
 
             .booking-container {
                 width: 100%;
@@ -173,9 +215,17 @@
             .form-group input,
             .form-group textarea {
                 width: 100%;
-                font-size: 0.9rem;
+                font-size: 16px;
                 padding: 13px 14px;
+                min-height: 50px;
             }
+
+            .form-group textarea {
+                min-height: 120px;
+            }
+
+
+            /* CHOICE BUTTONS */
 
             .choice-grid {
                 grid-template-columns: 1fr;
@@ -183,33 +233,97 @@
             }
 
             .choice-button {
-                min-height: 56px;
+                width: 100%;
+                min-height: 58px;
                 padding: 12px 14px;
-                font-size: 0.78rem;
+                font-size: 0.8rem;
+                cursor: pointer;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+                user-select: none;
+            }
+
+            .choice-button:active,
+            .number-button:active,
+            .submit-button:active,
+            .main-button:active {
+                transform: scale(0.98);
+            }
+
+
+            /* DATE */
+
+            .date-picker-wrap {
+                width: 100%;
+                min-height: 58px;
             }
 
             .date-button {
-                min-height: 56px;
-                font-size: 0.78rem;
+                width: 100%;
+                min-height: 58px;
+                font-size: 0.8rem;
+                padding: 12px 14px;
+                cursor: pointer;
+                touch-action: manipulation;
             }
 
-            .number-selector {
+            .mobile-date-input {
+                min-height: 58px;
                 height: 58px;
+            }
+
+
+            /* OTHER TIME */
+
+            #otherTimeContainer {
+                width: 100%;
+            }
+
+
+            /* OTHER EVENT */
+
+            #otherEventContainer {
+                width: 100%;
+            }
+
+
+            /* NUMBER */
+
+            .number-selector {
+                height: 62px;
+                width: 100%;
             }
 
             .number-button {
                 width: 52px;
                 height: 52px;
+                min-width: 52px;
+                cursor: pointer;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
             }
 
             .number-display {
                 font-size: 1.15rem;
             }
 
+
+            /* PAYMENT */
+
+            .payment-options {
+                width: 100%;
+            }
+
+
+            /* SUBMIT */
+
             .submit-button {
                 width: 100%;
-                min-height: 58px;
+                min-height: 60px;
                 font-size: 0.85rem;
+                cursor: pointer;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
             }
 
             .required-notice {
@@ -361,6 +475,7 @@
     </header>
 
 
+
     <main>
 
 
@@ -460,10 +575,6 @@
             <div class="booking-container">
 
 
-                <!-- =================================
-                     BOOKING FORM
-                ================================== -->
-
                 <form
                     id="bookingForm"
                     class="booking-form"
@@ -516,26 +627,32 @@
 
                     <div class="form-group full-width">
 
-                        <label>
+                        <label for="date">
                             DATE
                             <span>*</span>
                         </label>
 
-                        <button
-                            type="button"
-                            class="choice-button date-button"
-                            id="dateButton"
-                        >
-                            SELECT DATE
-                        </button>
 
-                        <input
-                            type="date"
-                            id="date"
-                            name="date"
-                            required
-                            class="hidden-date-input"
-                        >
+                        <div class="date-picker-wrap">
+
+                            <button
+                                type="button"
+                                class="choice-button date-button"
+                                id="dateButton"
+                            >
+                                SELECT DATE
+                            </button>
+
+
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                class="mobile-date-input"
+                                required
+                            >
+
+                        </div>
 
                     </div>
 
@@ -587,6 +704,7 @@
                                 2:00 PM
                             </button>
 
+
                             <button
                                 type="button"
                                 class="choice-button"
@@ -594,6 +712,7 @@
                             >
                                 3:00 PM
                             </button>
+
 
                             <button
                                 type="button"
@@ -603,6 +722,7 @@
                                 4:00 PM
                             </button>
 
+
                             <button
                                 type="button"
                                 class="choice-button"
@@ -610,6 +730,7 @@
                             >
                                 5:00 PM
                             </button>
+
 
                             <button
                                 type="button"
@@ -619,6 +740,7 @@
                                 6:00 PM
                             </button>
 
+
                             <button
                                 type="button"
                                 class="choice-button"
@@ -626,6 +748,7 @@
                             >
                                 7:00 PM
                             </button>
+
 
                             <button
                                 type="button"
@@ -733,7 +856,7 @@
 
 
 
-                    <!-- OTHER EVENT -->
+                    <!-- OTHER EVENT / ANYTHING ELSE -->
 
                     <div
                         class="form-group full-width"
@@ -1312,6 +1435,8 @@
             <div class="contact-grid">
 
 
+                <!-- WHATSAPP -->
+
                 <a
                     href="https://wa.me/59995254792"
                     class="contact-card"
@@ -1536,51 +1661,63 @@
 
 
 
-    <!-- DATE FUNCTION ONLY -->
+    <!-- =====================================
+         DATE SCRIPT
+    ====================================== -->
 
     <script>
 
-        const dateButton = document.getElementById("dateButton");
-        const dateInput = document.getElementById("date");
+        const dateButton =
+            document.getElementById("dateButton");
+
+        const dateInput =
+            document.getElementById("date");
+
 
         if (dateButton && dateInput) {
 
-            dateButton.addEventListener("click", () => {
+            dateInput.addEventListener("change", function () {
 
-                if (typeof dateInput.showPicker === "function") {
-
-                    try {
-
-                        dateInput.showPicker();
-                        return;
-
-                    } catch (error) {}
-
+                if (!this.value) {
+                    return;
                 }
 
-                dateInput.click();
+                const selectedDate =
+                    new Date(this.value + "T00:00:00");
+
+                const formattedDate =
+                    selectedDate.toLocaleDateString("en-US", {
+                        weekday: "short",
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric"
+                    });
+
+                dateButton.textContent =
+                    formattedDate;
+
+                dateButton.classList.add("selected");
 
             });
 
 
-            dateInput.addEventListener("change", () => {
+            dateButton.addEventListener("click", function () {
 
-                if (dateInput.value) {
+                try {
 
-                    const selectedDate =
-                        new Date(dateInput.value + "T00:00:00");
+                    if (typeof dateInput.showPicker === "function") {
 
-                    const formattedDate =
-                        selectedDate.toLocaleDateString("en-US", {
-                            weekday: "short",
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric"
-                        });
+                        dateInput.showPicker();
 
-                    dateButton.textContent = formattedDate;
+                    } else {
 
-                    dateButton.classList.add("selected");
+                        dateInput.click();
+
+                    }
+
+                } catch (error) {
+
+                    dateInput.click();
 
                 }
 
@@ -1591,7 +1728,10 @@
     </script>
 
 
+    <!-- MAIN JAVASCRIPT -->
+
     <script src="script.js"></script>
+
 
 </body>
 
