@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,263 @@
     <title>CM CreativeShots | Photography</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* DATE BUTTON ONLY */
+
+        .date-button {
+            width: 100%;
+            min-height: 70px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .hidden-date-input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .date-button.selected {
+            border-color: #8EB69B;
+            background: rgba(142, 182, 155, 0.12);
+            color: #8EB69B;
+        }
+        /* =====================================
+   MOBILE RESPONSIVE - KEEP SAME STYLE
+   ===================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .header {
+        padding: 14px 18px;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .menu-button {
+        font-size: 22px;
+        padding: 6px 10px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 100px 20px 70px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .small-title {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.1rem, 10vw, 3.2rem);
+        line-height: 1.02;
+        letter-spacing: -1px;
+    }
+
+    .hero-description {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        max-width: 100%;
+    }
+
+    .main-button {
+        width: 100%;
+        padding: 14px 18px;
+        font-size: 0.85rem;
+    }
+
+    .section {
+        padding: 70px 18px;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(2rem, 9vw, 3rem);
+        line-height: 1.05;
+    }
+
+    .section-heading p {
+        font-size: 0.9rem;
+        line-height: 1.55;
+    }
+
+    .booking-container {
+        width: 100%;
+    }
+
+    .booking-form {
+        gap: 18px;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .form-group label {
+        font-size: 0.72rem;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 13px 14px;
+    }
+
+    .choice-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .choice-button {
+        min-height: 56px;
+        padding: 12px 14px;
+        font-size: 0.78rem;
+    }
+
+    .date-button {
+        min-height: 56px;
+        font-size: 0.78rem;
+    }
+
+    .number-selector {
+        height: 58px;
+    }
+
+    .number-button {
+        width: 52px;
+        height: 52px;
+    }
+
+    .number-display {
+        font-size: 1.15rem;
+    }
+
+    .submit-button {
+        width: 100%;
+        min-height: 58px;
+        font-size: 0.85rem;
+    }
+
+    .required-notice {
+        font-size: 0.72rem;
+        line-height: 1.5;
+    }
+
+    /* RULES */
+
+    .rules-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .rule-card {
+        padding: 20px;
+    }
+
+    .rule-card h3 {
+        font-size: 0.9rem;
+    }
+
+    .rule-card p {
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+
+    .rule-number {
+        font-size: 0.75rem;
+    }
+
+    .rules-bottom {
+        font-size: 0.75rem;
+        line-height: 1.5;
+        padding: 18px;
+    }
+
+    /* ABOUT ME */
+
+    .about-content {
+        width: 100%;
+    }
+
+    .about-label {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    .about-text p {
+        font-size: 0.88rem;
+        line-height: 1.65;
+        margin-bottom: 18px;
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .contact-card {
+        padding: 16px;
+    }
+
+    .contact-card h3 {
+        font-size: 0.82rem;
+    }
+
+    .contact-card p {
+        font-size: 0.78rem;
+    }
+
+    .contact-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .contact-arrow {
+        font-size: 1rem;
+    }
+
+    /* FOOTER */
+
+    .footer {
+        padding: 35px 18px 25px;
+    }
+
+    .footer-logo {
+        font-size: 1rem;
+    }
+
+    .footer p {
+        font-size: 0.75rem;
+    }
+}
+
+    </style>
 
 </head>
 
@@ -33,10 +291,6 @@
 
 
         <nav class="navbar">
-
-            <a href="#home">
-                HOME
-            </a>
 
             <a href="#rules">
                 RULES
@@ -75,12 +329,8 @@
 
     <div class="mobile-menu" id="mobileMenu">
 
-        <a href="#home">
-            HOME
-        </a>
-
         <a href="#rules">
-            RULES
+            REGLA
         </a>
 
         <a href="#booking">
@@ -177,9 +427,11 @@
                     BOOK YOUR SESSION
                 </p>
 
+
                 <h2>
                     BOOKING
                 </h2>
+
 
                 <p>
                     Please complete all required fields below.
@@ -247,18 +499,27 @@
 
                     <!-- DATE -->
 
-                    <div class="form-group">
+                    <div class="form-group full-width">
 
-                        <label for="date">
+                        <label>
                             DATE
                             <span>*</span>
                         </label>
+
+                        <button
+                            type="button"
+                            class="choice-button date-button"
+                            id="dateButton"
+                        >
+                            SELECT DATE
+                        </button>
 
                         <input
                             type="date"
                             id="date"
                             name="date"
                             required
+                            class="hidden-date-input"
                         >
 
                     </div>
@@ -468,7 +729,7 @@
 
                             PLEASE TELL ME WHAT OTHER EVENT YOU NEED
 
-                            <span class="optional">OPTIONAL</span>
+                            <span>*</span>
 
                         </label>
 
@@ -497,6 +758,7 @@
 
 
                         <div class="number-selector">
+
 
                             <button
                                 type="button"
@@ -1015,6 +1277,7 @@
                     GET IN TOUCH
                 </p>
 
+
                 <h2>
                     CONTACT
                 </h2>
@@ -1072,6 +1335,9 @@
                 </a>
 
 
+
+                <!-- EMAIL:
+                     OPENS GMAIL COMPOSE WITH YOUR EMAIL READY -->
 
                 <a
                     href="https://mail.google.com/mail/?view=cm&fs=1&to=cmcreativeshots@gmail.com"
@@ -1248,6 +1514,61 @@
 
     </footer>
 
+
+
+    <!-- DATE FUNCTION ONLY -->
+
+    <script>
+
+        const dateButton = document.getElementById("dateButton");
+        const dateInput = document.getElementById("date");
+
+        if (dateButton && dateInput) {
+
+            dateButton.addEventListener("click", () => {
+
+                if (typeof dateInput.showPicker === "function") {
+
+                    try {
+
+                        dateInput.showPicker();
+                        return;
+
+                    } catch (error) {}
+
+                }
+
+                dateInput.click();
+
+            });
+
+
+            dateInput.addEventListener("change", () => {
+
+                if (dateInput.value) {
+
+                    const selectedDate =
+                        new Date(dateInput.value + "T00:00:00");
+
+                    const formattedDate =
+                        selectedDate.toLocaleDateString("en-US", {
+                            weekday: "short",
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric"
+                        });
+
+                    dateButton.textContent = formattedDate;
+
+                    dateButton.classList.add("selected");
+
+                }
+
+            });
+
+        }
+
+    </script>
 
 
     <script src="script.js"></script>
